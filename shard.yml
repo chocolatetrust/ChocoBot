@@ -1,0 +1,20 @@
+name: ChocoBot
+version: 0.1.0
+
+authors:
+  - Cassidy Dingenskirchen <admin@15318.de>
+
+targets:
+  ChocoBot:
+    main: src/ChocoBot.cr
+
+dependencies:
+  discordcr:
+    github: discordcr/discordcr
+    branch: master
+  dotenv:
+    github: gdotdesign/cr-dotenv
+
+crystal: 0.30.1
+
+license: MIT
