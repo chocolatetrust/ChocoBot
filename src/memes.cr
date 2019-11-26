@@ -24,5 +24,6 @@ MEMES["kat9"] = {file: "kat9.png", text: nil}
 MEMES["kat10"] = {file: "kat10.png", text: nil}
 MEMES["kat11"] = {file: "kat11.png", text: nil}
 MEMES["lmao"] = {file: "lmao.gif", text: nil}
+MEMES["politics"] = {file: "politics.png", text: nil}
 MEMES["racism"] = {file: "racism.png", text: nil}
 MEMES["tax"] = {file: "tax.png", text: nil}
