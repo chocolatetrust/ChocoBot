@@ -55,6 +55,10 @@ end
 {% for command in [
                     {cmd: "katname", id: 371151824331210755, genitive: "Kat's"},
                     {cmd: "milkname", id: 515909580358942720, genitive: "Milk Cake's"},
+                    {cmd: "roxname", id: 309638102035726346, genitive: "Roxie's"},
+                    {cmd: "mvname", id: 118780904687534080, genitive: "Marco's"},
+                    {cmd: "nikname", id: 124013746271027202, genitive: "Nal's"},
+                    {cmd: "cassname", id: 344166495317655562, genitive: "Cass'"},
                   ] %}
   COMMANDS[{{ command[:cmd] }}] = Proc(Discord::Message, Array(String), Void).new do |msg, args|
     begin
