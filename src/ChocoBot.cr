@@ -19,6 +19,7 @@ CLIENT = Discord::Client.new(
   logger: Logger.new(STDOUT, level: Logger::Severity::WARN)
 )
 CACHE = Discord::Cache.new(CLIENT)
+CLIENT.cache = CACHE
 
 CLIENT.on_message_create do |msg|
   next if msg.author.bot || !msg.content.starts_with?(",")
