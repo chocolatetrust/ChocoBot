@@ -27,3 +27,4 @@ MEMES["lmao"] = {file: "lmao.gif", text: nil}
 MEMES["politics"] = {file: "politics.png", text: nil}
 MEMES["racism"] = {file: "racism.jpg", text: nil}
 MEMES["tax"] = {file: "tax.png", text: nil}
+MEMES["freewill"] = {file: "freewill.png", text: nil}
