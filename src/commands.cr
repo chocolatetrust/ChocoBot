@@ -93,3 +93,19 @@ COMMANDS["big"] = Proc(Discord::Message, Array(String), Void).new do |msg, args|
   CLIENT.upload_file(msg.channel_id, "", emoji_file)
   emoji_file.delete
 end
+
+# control stories
+COMMANDS["story"] = Proc(Discord::Message, Array(String), Void).new do |msg, args|
+  if arg = args[0]?
+    if arg == "start"
+      STORIES[msg.channel_id] = CLIENT.create_message(msg.channel_id, "*Once upon a time…*").id
+    elsif arg == "stop"
+      CLIENT.add_pinned_channel_message(msg.channel_id, STORIES[msg.channel_id])
+      STORIES.delete msg.channel_id
+    else
+      raise "Error: Unknown argument, try `,story start` or `,story stop`"
+    end
+  else
+    raise "Error: Missing argument, try `,story start` or `,story stop`"
+  end
+end

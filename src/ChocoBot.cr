@@ -12,6 +12,8 @@ COMMANDS = {} of String => (Discord::Message, Array(String)) -> Void
 # just simple static image responses with optional text
 MEMES = {} of String => {file: String, text: String?}
 
+STORIES = {} of Discord::Snowflake => Discord::Snowflake
+
 LOG    = Logger.new(STDOUT)
 CLIENT = Discord::Client.new(
   token: "Bot #{ENV["DISCORD_TOKEN"]}",
@@ -22,30 +24,43 @@ CACHE = Discord::Cache.new(CLIENT)
 CLIENT.cache = CACHE
 
 CLIENT.on_message_create do |msg|
-  next if msg.author.bot || !msg.content.starts_with?(",")
+  next if msg.author.bot
 
-  word = msg.content.lchop(",").split(" ").first.downcase
+  if msg.content.starts_with?(",")
+    word = msg.content.lchop(",").split(" ").first.downcase
 
-  meme = MEMES[word]?
-  if meme
-    LOG.info("Sending '#{word}' for #{msg.author.id}")
-    File.open("res/" + meme[:file]) do |file|
-      CLIENT.upload_file(
-        msg.channel_id,
-        meme[:text] || "",
-        file
-      )
+    meme = MEMES[word]?
+    if meme
+      LOG.info("Sending '#{word}' for #{msg.author.id}")
+      File.open("res/" + meme[:file]) do |file|
+        CLIENT.upload_file(
+          msg.channel_id,
+          meme[:text] || "",
+          file
+        )
+      end
+      next
     end
-    next
-  end
 
-  command = COMMANDS[word]?
-  if command
-    # chop off prefix and command word, split and remove empty strings
-    args = msg.content[(word.size + 1)..].split(" ").reject!("")
+    command = COMMANDS[word]?
+    if command
+      # chop off prefix and command word, split and remove empty strings
+      args = msg.content[(word.size + 1)..].split(" ").reject!("")
 
-    LOG.info("Running '#{word}'#{args} for #{msg.author.id}")
-    command.call(msg, args)
+      LOG.info("Running '#{word}'#{args} for #{msg.author.id}")
+      command.call(msg, args)
+    end
+  else
+    if mid = STORIES[msg.channel_id]?
+      message = CLIENT.get_channel_message(msg.channel_id, mid)
+      new_content = message.content.lchop("*Once upon a time…*") + " " + msg.content.split(" ")[0]
+      if new_content.size < 2000
+        CLIENT.delete_message(msg.channel_id, msg.id)
+        CLIENT.edit_message(msg.channel_id, mid, new_content)
+      else
+        CLIENT.create_reaction(msg.channel_id, msg.id, URI.encode "❌")
+      end
+    end
   end
 end
 
