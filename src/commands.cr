@@ -109,3 +109,15 @@ COMMANDS["story"] = Proc(Discord::Message, Array(String), Void).new do |msg, arg
     raise "Error: Missing argument, try `,story start` or `,story stop`"
   end
 end
+
+COMMANDS["ban"] = Proc(Discord::Message, Array(String), Void).new do |msg, args|
+  if arg = args[0]?
+    if arg =~ /<@!?\d+>/
+      CLIENT.create_message(msg.channel_id, "#{arg} get fucked lmaoooooo")
+    else
+      CLIENT.create_message(msg.channel_id, "#{arg} is now illegal")
+    end
+  else
+    CLIENT.create_message(msg.channel_id, "ban what?")
+  end
+end
