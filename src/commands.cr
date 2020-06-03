@@ -59,6 +59,7 @@ end
                     {cmd: "mvname", id: 118780904687534080, genitive: "Marco's"},
                     {cmd: "nikname", id: 124013746271027202, genitive: "Nal's"},
                     {cmd: "cassname", id: 344166495317655562, genitive: "Cass'"},
+                    {cmd: "hagname", id: 602834183273840650, genitive: "Hag's"}
                   ] %}
   COMMANDS[{{ command[:cmd] }}] = Proc(Discord::Message, Array(String), Void).new do |msg, args|
     begin
