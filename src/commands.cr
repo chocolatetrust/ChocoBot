@@ -67,7 +67,11 @@ end
       raise "Name must be ≥2 and ≤32 characters" unless new_name.size > 1 && new_name.size < 33
       old_name = CACHE.resolve_member(msg.guild_id.not_nil!, {{ command[:id] }}).nick || "nil"
       CLIENT.modify_guild_member(msg.guild_id.not_nil!, {{ command[:id] }}, nick: new_name)
+      {% if command[:cmd] == "hagname" %}
+      CLIENT.create_message(msg.channel_id, {{ command[:genitive] }} + " nickname updated from **#{old_name}** to **#{new_name}**#{"…" * Random.new.rand(17)}")
+      {% else %}
       CLIENT.create_message(msg.channel_id, {{ command[:genitive] }} + " nickname updated from **#{old_name}** to **#{new_name}**!")
+      {% end %}
     rescue e
       LOG.warn e
       CLIENT.create_message(msg.channel_id, "Error: #{e}")
