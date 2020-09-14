@@ -59,7 +59,11 @@ end
                     {cmd: "mvname", id: 118780904687534080, genitive: "Marco's"},
                     {cmd: "nikname", id: 124013746271027202, genitive: "Nal's"},
                     {cmd: "cassname", id: 344166495317655562, genitive: "Cass'"},
-                    {cmd: "hagname", id: 602834183273840650, genitive: "Hag's"}
+                    {cmd: "hagname", id: 602834183273840650, genitive: "Hag's"},
+                    {cmd: "siginame", id: 164488018948784129, genitive: "Sigi's"},
+                    {cmd: "leoname", id: 246677246516002816, genitive: "Leo's"},
+                    {cmd: "kelpname", id: 540587853449527306, genitive: "Kelsier's"},
+                    {cmd: "terrorname", id: 110183857646522368, genitive: "Clerical's"},
                   ] %}
   COMMANDS[{{ command[:cmd] }}] = Proc(Discord::Message, Array(String), Void).new do |msg, args|
     begin
