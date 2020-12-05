@@ -1,13 +1,8 @@
 with import (builtins.fetchTarball {
-  url = "https://github.com/NixOS/nixpkgs/tarball/b67bc34d4e3de1e89b8bb7cd6e375ba44f1ae8ca";
-  sha256 = "1q9a64bl5afflgpa2iaw1q7z7s08c8xq9w6lndlnc5c3siajrp8v";
-}) {};
+  # nixos-unstable on 2020-07-18
+  url =
+    "https://github.com/NixOS/nixpkgs/tarball/d7e20ee25ed8aa1f0f24a9ca77026c6ef217f6ba";
+  sha256 = "1ar7prnrmmlqj17g57nqp82hgy5283dxb94akaqrwpbaz7qfwi4y";
+}) { };
 
-crystal.buildCrystalPackage rec {
-  version = "0.1.0";
-  pname = "ChocoBot";
-  src = ./.;
-
-  shardsFile = ./shards.nix;
-  crystalBinaries.ChocoBot.src = "src/ChocoBot.cr";
-}
+poetry2nix.mkPoetryApplication { projectDir = ./.; }

@@ -1,7 +1,4 @@
-/docs/
-/lib/
-/bin/
-/.shards/
-*.dwarf
-.env
+settings.json
+.vscode
+__pycache__
 result
