@@ -1,0 +1,127 @@
+{
+    "token": "--snip--",
+    "renames": {
+        "katname": [
+            371151824331210755,
+            "Kat's"
+        ],
+        "milkname": [
+            515909580358942720,
+            "Milk Cake's"
+        ],
+        "roxname": [
+            309638102035726346,
+            "Roxie's"
+        ],
+        "mvname": [
+            118780904687534080,
+            "Marco's"
+        ],
+        "nikname": [
+            124013746271027202,
+            "Nal's"
+        ],
+        "cassname": [
+            344166495317655562,
+            "Cass'"
+        ],
+        "hagname": [
+            602834183273840650,
+            "Hag's"
+        ],
+        "leoname": [
+            246677246516002816,
+            "Leo's"
+        ],
+        "siginame": [
+            164488018948784129,
+            "Sigi's"
+        ],
+        "kelpname": [
+            540587853449527306,
+            "Kelsier's"
+        ],
+        "terrorname": [
+            110183857646522368,
+            "Clerical's"
+        ]  
+    },
+    "memes": {
+        "cocoa": [
+            "cocoa.png",
+            "Hail <@278301453620084736>, right hand of the revolution\nThe Botmaster\nLightkeeper\nDefender of the Northern Realms\nProtector of the chocolate bars!"
+        ],
+        "android": [
+            "android.png",
+            null
+        ],
+        "ethnics": [
+            "ethnics.gif",
+            null
+        ],
+        "ethnics2": [
+            "ethnics2.png",
+            null
+        ],
+        "java": [
+            "java.png",
+            null
+        ],
+        "kat": [
+            "kat.jpg",
+            null
+        ],
+        "kat2": [
+            "kat2.png",
+            null
+        ],
+        "kat3": [
+            "kat3.png",
+            null
+        ],
+        "kat6": [
+            "kat6.png",
+            null
+        ],
+        "kat7": [
+            "kat7.png",
+            null
+        ],
+        "kat8": [
+            "kat8.png",
+            null
+        ],
+        "kat9": [
+            "kat9.png",
+            null
+        ],
+        "kat10": [
+            "kat10.png",
+            null
+        ],
+        "kat11": [
+            "kat11.png",
+            null
+        ],
+        "lmao": [
+            "lmao.gif",
+            null
+        ],
+        "politics": [
+            "politics.png",
+            null
+        ],
+        "racism": [
+            "racism.jpg",
+            null
+        ],
+        "tax": [
+            "tax.png",
+            null
+        ],
+        "freewill": [
+            "freewill.png",
+            null
+        ]
+    }
+}
