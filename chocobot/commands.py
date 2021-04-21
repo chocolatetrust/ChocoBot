@@ -34,6 +34,19 @@ class Commands(Cog):
         else:
             await ctx.send(f"{what} is now illegal")
 
+    async def servername(self, ctx: commands.Context, c_word: str, f_word: str, p_word: str):
+        "Rename the server."
+
+        if (
+            not c_word.casefold().startswith("c")
+            or not f_word.casefold().startswith("f")
+            or not p_word.casefold().startswith("p")
+        ):
+            await ctx.reply("i'm afraid that'd violate brand guidelines")
+            return
+
+        await ctx.guild.edit(name=f"{c_word} {f_word} {p_word}", reason=f"blame {ctx.author}")
+
     # generic rename command, will silently fail if invoked without an alias
     async def xname(self, ctx: commands.Context, *, nick: str):
         user_id, genitive = tuple(self.bot.config["renames"][ctx.invoked_with])
@@ -50,16 +63,12 @@ class Commands(Cog):
                 + ("." * random.randrange(3, 17))
             )
         else:
-            await ctx.send(
-                f"{genitive} nickname updated from **{old_nick}** to **{nick}**"
-            )
+            await ctx.send(f"{genitive} nickname updated from **{old_nick}** to **{nick}**")
 
     @Cog.listener()
     async def on_ready(self):
         self.bot.add_command(
-            commands.command(aliases=list(self.bot.config["renames"].keys()))(
-                self.xname
-            )
+            commands.command(aliases=list(self.bot.config["renames"].keys()))(self.xname)
         )
 
     STORIES = {}
@@ -73,9 +82,7 @@ class Commands(Cog):
                     content = ""
 
                 await msg.delete()
-                await self.STORIES[msg.channel].edit(
-                    content=content + " " + msg.clean_content
-                )
+                await self.STORIES[msg.channel].edit(content=content + " " + msg.clean_content)
             except discord.HTTPException:
                 await msg.add_reaction("❌")
 
