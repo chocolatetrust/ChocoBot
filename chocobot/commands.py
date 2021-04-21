@@ -91,14 +91,14 @@ class Commands(Cog):
     async def create_role(
         self, ctx: commands.Context, title: str, color: discord.Color
     ) -> discord.Role:
-        top_role = sorted(ctx.guild.me.roles, key=lambda role: role.position)[-1]
 
         new_role = await ctx.guild.create_role(
             name=(title or ctx.author.display_name) + "~",
             color=color or discord.Color.random(),
             hoist=True,
         )
-        await new_role.edit(position=top_role.position - 1)
+        bots_role = discord.utils.get(ctx.guild.me.roles, name="Bots")
+        await new_role.edit(position=bots_role.position)
         return new_role
 
     @commands.group()
