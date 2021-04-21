@@ -88,6 +88,45 @@ class Commands(Cog):
             except discord.HTTPException:
                 await msg.add_reaction("❌")
 
+    async def create_role(
+        self, ctx: commands.Context, title: str, color: discord.Color
+    ) -> discord.Role:
+        top_role = sorted(ctx.guild.me.roles, key=lambda role: role.position)[-1]
+
+        new_role = await ctx.guild.create_role(
+            name=(title or ctx.author.display_name) + "~",
+            color=color or discord.Color.random(),
+            hoist=True,
+        )
+        await new_role.edit(position=top_role.position - 1)
+        return new_role
+
+    @commands.group()
+    async def role(self, ctx):
+        pass
+
+    @commands.command(parent=role, aliases=["colour"])
+    @commands.bot_has_permissions(manage_roles=True)
+    async def color(self, ctx: commands.Context, color: discord.Color):
+        role = discord.utils.find(lambda role: role.name.endswith("~"), ctx.author.roles)
+        if not role:
+            await ctx.author.add_roles(await self.create_role(ctx, None, color))
+        else:
+            await role.edit(color=color)
+
+        await ctx.send("Done!")
+
+    @commands.command(parent=role, aliases=["name"])
+    @commands.bot_has_permissions(manage_roles=True)
+    async def title(self, ctx: commands.Context, *, name: str):
+        role = discord.utils.find(lambda role: role.name.endswith("~"), ctx.author.roles)
+        if not role:
+            await ctx.author.add_roles(await self.create_role(ctx, name, None))
+        else:
+            await role.edit(name=name + "~")
+
+        await ctx.send("Done!")
+
     @commands.group()
     async def story(self, ctx):
         pass
