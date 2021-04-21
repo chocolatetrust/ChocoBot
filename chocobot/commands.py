@@ -34,6 +34,7 @@ class Commands(Cog):
         else:
             await ctx.send(f"{what} is now illegal")
 
+    @commands.command()
     async def servername(self, ctx: commands.Context, c_word: str, f_word: str, p_word: str):
         "Rename the server."
 
