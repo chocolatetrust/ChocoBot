@@ -11,5 +11,7 @@
             "java.png",
             null
         ],
-    }
+    },
+    "allow_replies": [],
+    "society_response": ">society"
 }

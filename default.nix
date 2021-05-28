@@ -5,4 +5,7 @@ with import (builtins.fetchTarball {
   sha256 = "0c9kr76p6nmf4z2j2afgcddckbaxq6kxlmp1895h6qamm1c0ypb9";
 }) { };
 
-poetry2nix.mkPoetryApplication { projectDir = ./.; }
+poetry2nix.mkPoetryApplication {
+  projectDir = ./.;
+  nativeBuildInputs = [ tesseract ];
+}

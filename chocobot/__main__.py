@@ -5,6 +5,7 @@ import json
 from .customizations import Bot
 from .commands import Commands
 from .memes import Memes
+from .replies import Society
 
 config = {}
 with open("settings.json", "r") as f:
@@ -14,7 +15,7 @@ intents = discord.Intents.default()
 intents.members = True
 bot = Bot(config, command_prefix=",", intents=intents, help_command=None)
 
-for Cog in (Commands, Memes):
+for Cog in (Commands, Memes, Society):
     bot.add_cog(Cog(bot))
 
 

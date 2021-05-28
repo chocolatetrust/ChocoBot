@@ -7,7 +7,8 @@ license = "AGPL-3.0-or-later"
 
 [tool.poetry.dependencies]
 python = "^3.8"
-"discord.py" = "^1.6"
+"discord.py" = "^1.7"
+pytesseract = "^0.3.7"
 
 [tool.poetry.dev-dependencies]
 black = "^20.8b1"
