@@ -52,6 +52,10 @@ class Commands(Cog):
     # generic rename command, will silently fail if invoked without an alias
     async def xname(self, ctx: commands.Context, *, nick: str):
         user_id, genitive = tuple(self.bot.config["renames"][ctx.invoked_with])
+
+        if ctx.invoked_with == "wandaname":
+            nick = f"|{nick}〉"
+
         if not nick or len(nick) > 32:
             await ctx.reply("Name must be ≥2 and ≤32 characters")
             return
